@@ -121,7 +121,7 @@ public:
         }
 
         // Print shortest path results
-        cout << "\n\nSingle source shortest path lengths from node " << startVertex << "\n";
+        cout << "\nSingle source shortest path lengths from node " << startVertex << "\n";
         for (int i = 0; i < numOfVertices; ++i) {
             cout << "  " << (i + 1) << ": ";
             if (distance[i] == INT_MAX) {

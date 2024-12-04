@@ -1,8 +1,10 @@
 #include <iostream>
 #include <cstring>
 #include <cmath>
-#include <cstdio>
-#include <climits>
+#include <sstream>
+
+#define INT_MAX 2147483647
+#define INT_MIN (-2147483648)
 using namespace std;
 
 // Graph class for adjacency matrix representation
@@ -13,7 +15,7 @@ private:
 
 public:
     // Constructor
-    Graph(int n) {
+    Graph(int n) {  
         numOfVertices = n;
 
         // Dynamically allocate a 2D array for adjacency matrix

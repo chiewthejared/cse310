@@ -51,28 +51,38 @@ public:
 
     // Find odd-degree vertices
     void findOddDegreeVertices() {
-        int *degree = new int[numOfVertices];
-        memset(degree, 0, numOfVertices * sizeof(int));
+    int *degree = new int[numOfVertices];
+    memset(degree, 0, numOfVertices * sizeof(int));
 
-        // Compute degree of each vertex
-        for (int i = 0; i < numOfVertices; ++i) {
-            for (int j = 0; j < numOfVertices; ++j) {
-                degree[i] += adjMatrix[i][j];
-            }
+    // Compute degree of each vertex
+    for (int i = 0; i < numOfVertices; ++i) {
+        for (int j = 0; j < numOfVertices; ++j) {
+            degree[i] += adjMatrix[i][j];
         }
-
-        // Print odd-degree vertices
-        cout << "\nThe odd degree vertices in G:\nO = { ";
-        for (int i = 0; i < numOfVertices; ++i) {
-            if (degree[i] % 2 != 0) {
-                cout << (i + 1) << " ";
-                dijkstra(i + 1); // Execute Dijkstra's algorithm for each odd-degree vertex
-            }
-        }
-        cout << "}\n";
-
-        delete[] degree;
     }
+
+    // Print odd-degree vertices
+    cout << "\nThe odd degree vertices in G:\nO = { ";
+    bool first = true; // To handle spacing correctly
+    for (int i = 0; i < numOfVertices; ++i) {
+        if (degree[i] % 2 != 0) {
+            if (!first) cout << " "; // Add space before subsequent vertices
+            cout << (i + 1);
+            first = false;
+        }
+    }
+    cout << " }\n"; // Close the set notation
+
+    // Execute Dijkstra's for each odd-degree vertex
+    for (int i = 0; i < numOfVertices; ++i) {
+        if (degree[i] % 2 != 0) {
+            dijkstra(i + 1);
+        }
+    }
+
+    delete[] degree;
+}
+
 
     // Perform Dijkstra's algorithm to find shortest paths
     void dijkstra(int startVertex) {

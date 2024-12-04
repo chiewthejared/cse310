@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cstring>
-#include <cstdlib>
+#include <cmath>
 #include <cstdio>
 #include <climits>
 using namespace std;
